@@ -1,0 +1,11 @@
+/* ===== All custom style here ===== */
+
+/* Left menu - Left icon */
+.hw-icon-square{background: url(../img/custom/square.png) no-repeat center center; padding: 7px;}
+
+/* Left menu - Right icon */
+.hw-icon-open{background: url(../img/custom/open.png) no-repeat top right;background-size: 10px 10px; padding: 5px}
+.hw-icon-close{background: url(../img/custom/close.png) no-repeat top right; background-size: 10px 10px; padding: 5px}
+.textred{
+    color: red;
+}

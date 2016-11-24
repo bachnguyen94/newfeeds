@@ -1,0 +1,23 @@
+{
+    "name": "your-name-here/Social",
+    "description": "Social plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Social\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Social\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}

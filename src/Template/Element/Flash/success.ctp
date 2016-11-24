@@ -1,0 +1,1 @@
+<div class="flash_success"><p><?= h($message) ?></p></div>

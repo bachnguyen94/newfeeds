@@ -1,0 +1,85 @@
+#!/bin/bash
+
+projectPath="http://gitlab.hiworld.com.vn/duynb/hiworld-web-core.git"
+pluginPath="http://wiki.hiworld.com.vn/webcore/plugins"
+
+die()
+{
+    echo "$1"
+    echo "";
+    exit 1
+}
+
+help="Usage of $(basename "$0") bash:
+    -h  Show the help menu
+    -c  Create new project
+    -p  Get plugin(s)"
+
+if [ "$#" -lt 1 ]; then
+    die "$help"
+fi
+
+case $1 in
+    -h )die "$help" ;;
+    -c )
+        # --- Check missing project name
+        if [ -z "$2" ]; then
+            die "Usage: -c [project_name]"
+        fi
+
+        # --- Check project name exist
+        if [ -d ./$2 ]; then
+            die "Project name [$2] already exist!"
+        fi
+
+        git clone $projectPath
+	mv hiworld-web-core ./$2
+	rm -rf ./$2/.git
+
+        # --- Rename all default files & folders
+        mv ./$2/config/app.default.php ./$2/config/app.php
+        mv ./$2/tmp.default ./$2/tmp
+        mv ./$2/webroot/upload.default ./$2/webroot/upload
+
+        # --- Set permission for tmp folders
+        sudo chmod 777 -R ./$2/tmp
+        sudo chmod 777 -R ./$2/webroot/upload
+    ;;
+    -p )
+        if [ -z "$2" ]; then
+            die "Usage get plugin(s): -p [project_name] [plugin_name_1] [plugin_name_2] ..."
+        fi
+
+        # --- Check project name exist
+        if [ ! -d ./$2 ]; then
+            die "Project name [$2] does not exist! Use -c [$2] to create new project"
+        fi
+
+        # --- Check missing plugin
+        if [ -z "$3" ]; then
+            die "Missing [plugin_name]"
+        fi
+
+	for plugin in "$@"
+	do
+	    if [ $plugin == "-p" ] || [ $plugin == $2 ]; then
+		continue
+	    fi
+
+            # --- Check plugin exist
+            if [ -d ./$2/plugins/$plugin ]; then
+                echo "Plugin [$plugin] already exist!"
+            else
+                wget -P ./$2/plugins $pluginPath/$plugin.zip
+                if [ -f ./$2/plugins/$plugin.zip ]; then
+                    unzip -qq ./$2/plugins/$plugin.zip -d ./$2/plugins/
+                    rm ./$2/plugins/$plugin.zip
+                fi
+            fi
+	done
+    ;;
+    *)
+        echo "Invalid parameters!"
+        die "$help"
+    ;;
+esac

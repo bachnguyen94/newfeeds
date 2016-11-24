@@ -1,0 +1,196 @@
+/* --- Flash Message { --- */
+.flash_success{background: #F6FFEC;border: 1px solid #89B755; border-radius: 3px; margin-bottom: 10px;padding: 1px;}
+.flash_success p{background: #DFF6C5 url(../../img/core/flash_success.png) no-repeat 4px center; color: #496528; margin: 0; padding: 7px 25px;}
+.flash_success a{color: #006312; font-weight: bold;}
+
+.flash_error{background: #FDE4E1;border: 1px solid #B16A6C; border-radius: 3px; margin-bottom: 10px;padding: 1px;}
+.flash_error p{background: #F4CAC6 url(../../img/core/flash_error.png) no-repeat 4px center; color: #630E18; margin: 0; padding: 7px 25px;}
+.flash_error a{color: #822121; font-weight: bold;}
+
+.flash_warning{background: #FFF7CE;border: 1px solid #D9C65B; border-radius: 3px; margin-bottom: 10px;padding: 1px;}
+.flash_warning p{ background: #FDF0B1 url(../../img/core/flash_warning.png) no-repeat 4px center;    color: #756B30;    margin: 0; padding: 7px 25px;}
+.flash_warning a{ color: #756B30; font-weight: bold;}
+/* --- Flash Message } --- */
+
+.hw-10 {height:10px}
+.hw-20 {height:20px}
+.hw-30 {height:30px}
+.hw-40 {height:40px}
+.hw-50 {height:50px}
+
+.hw-pic {border:solid 1px #ccc;padding:1px;}
+.hw-scroll {overflow: auto;}
+
+/* Custom Float Box { */
+.hw-floatbox
+{
+    z-index:1000;
+    display:none;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    max-width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    min-height: 300px;
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+#hw-floatbox-overlay
+{
+    z-index: 999;
+    display:none;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#hw-floatbox-close
+{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+/* Custom Float Box } */
+
+/* Overlay Loading { */
+#hw-loading {z-index:1001;display:none;background: rgba(0, 0, 0, 0.2);position: fixed;top: 0;left: 0;width: 100%;height: 100%;}
+#hw-loading img {z-index:1002;position: fixed;top: 50%;left: 50%;margin-left:-50px;margin-top: -50px;}
+/* Overlay Loading } */
+.image-thumb-inputfile {
+    margin-bottom: 5px !important;
+}
+.image-thumb-inputfile img {
+    max-width: 70px;
+    max-height: 70px;
+    border: solid 1px #ccc;
+    padding: 2px;
+    margin-right: 3px;
+}
+.hw-image {
+    display: inline-block;
+    position: relative;
+    border: solid 1px #ccc;
+    padding: 1px;
+}
+.hw-delete-link {
+    position: absolute;
+    right: 3px;
+    top: 5px;
+    display: inline-block;
+    z-index: 9;
+}
+.icon-close.small {
+    width: 15px;
+    height: 15px;
+}
+.icon-close {
+    background: url("../../img/core/icon-close.png") no-repeat center;
+    width: 20px;
+    height: 20px;
+    background-size: 110% auto;
+    display: inline-block;
+}
+
+.error-message
+{
+    padding-top:5px;
+    padding-left:3px;
+    color:#FA5D5D;
+}
+
+.required 
+{
+    color: #F00;
+}
+
+.hw-file-bg
+{
+    display: block;
+    background-image: url("../../img/core/upload-bg.png") !important;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.hw-file-container { position: relative; border: 2px dashed #ccc}
+.hw-file-container .hw-file-overlay 
+{
+    pointer-events: none;
+    position: absolute;
+    background-color: #fff;
+    width:100%; height: 100%;
+    z-index: 5;
+    text-align: center;
+    font-size: 20px; 
+    line-height: 40px; 
+    color: #ccc;
+    display: table;
+}
+.hw-file-container .hw-file-overlay span{ vertical-align: middle; display: table-cell;}
+.hw-file-container input[type=file]{position:absolute;z-index: 4 ; border: none; height: 100%;cursor: pointer;}
+.prevIcon {
+    margin: 10px 0;
+    display: table;
+    width: 100%;
+}
+.prevIcon > img {
+    max-width: 50px;
+    margin-right: 5px;
+}
+.prevIcon .hw-image {
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+    background-position: -18px 6px;
+}
+div.chosen-container .chosen-single  div b {
+    background-position: 0 5px;
+}
+div.chosen-container .chosen-single span {
+    margin-right: 10px;
+}
+div.chosen-container .chosen-single{
+    display: block;
+    width: 100%;
+    height: 32px;
+    padding: 6px 12px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #555;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+}
+.chosen-container .chosen-results {
+    border-radius: 0;
+    font-weight: normal;
+}
+.table thead tr th.sorting-custom {
+    padding: 0;
+}
+.sorting-custom a.asc {
+    background-image: url("images/asc.png");
+}
+.sorting-custom a.desc {
+    background-image: url("images/desc.png");
+}
+.sorting-custom a {
+    display: block;
+    color: #333;
+    background: url('images/sorting.png') no-repeat center right;
+    padding: 8px 15px;
+}
