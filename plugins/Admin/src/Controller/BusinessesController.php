@@ -24,9 +24,6 @@ class BusinessesController extends AppController
      */
     public function index()
     {
-        $hello = $this->Businesses->find('all')->contain(['Slides']);
-
-        debug($hello);die;
         $businesses = $this->paginate($this->Businesses);
 
         $this->set(compact('businesses'));
@@ -69,9 +66,11 @@ class BusinessesController extends AppController
                 $business = $this->Businesses->get($id);
                 $slide_order = $this->Slides->find()->select(['display_order'])->where(['Slides.recordId' => $id])->first();
             }
-            $business = $this->Core->patchEntity($business, $this->request->data, ['associated' => 'Slides']);
+            $business = $this->Core->patchEntity($business, $this->request->data);
             if ($this->Businesses->save($business)) {
-
+                if($this->request->data['display_order']){
+                    $slide = $this->Slides->newEntity();
+                }
                 $this->Flash->success(__('The busines has been saved.'));
 
                 return $this->redirect(['action' => 'index']);

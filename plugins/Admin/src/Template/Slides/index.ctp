@@ -70,9 +70,9 @@ $this->Html->addCrumb(__('System'));
                             foreach ($slides as $slide): ?>
                             <tr id=<?= $slide->id ?>>
                                 <td><?= h($slide->table_name) ?></td>
-                                <td><?= $this->Core->image(${'record'.$i},'imageUrl',150,150);?></td>
-                                <td><?= h(${'record'.$i}->title) ?></td>
-                                <td><?= h($slide->description) ?></td>
+                                <td><?= $this->Core->image($arr_table[$i],'imageUrl',150,150);?></td>
+                                <td><?= h($arr_table[$i]->title) ?></td>
+                                <td><?= h($arr_table[$i]->description) ?></td>
                                 <td>
                                     <?= $this->Form->input('status', ['default' => $slide->status,'type' => 'select','options' => $status ,'class'=>'form-control','id'=>'stt', 'required' => false]); ?>
                                 </td>

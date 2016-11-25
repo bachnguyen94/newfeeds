@@ -39,7 +39,9 @@ class GamesTable extends Table
         $this->addBehavior('Timestamp');
         $this->hasOne('Slides', [
             'className' => 'Slides',
-            'foreignKey' => 'recordId'
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Games'],
+            'joinType' => 'INNER'
         ]);
     }
 

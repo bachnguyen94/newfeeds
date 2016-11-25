@@ -32,7 +32,6 @@ class SlidesController extends AppController
      */
     public function index()
     {
-
         $slides = $this->paginate($this->Slides);
         // danh sách thứ tự slide
         $orders = $this->Slides->find('list',[
@@ -44,19 +43,14 @@ class SlidesController extends AppController
             'keyField' => 'status',
             'valueField' => 'status'
         ])->toArray();
-
-        $arrEntity = array();
-        $arrEntity['orders'] = $orders;
-        $arrEntity['status'] = $status;
-        $slide_entities = $this->Slides->find('all')->order(['display_order'=>'ASC'])->contain(['Businesses']);
-        $arrEntity['slides'] = $slide_entities;
-        $str = "record"; $i = 0;
-        foreach ($slide_entities as $slide_entity){
-            ${$str.$i} = $this->{$slide_entity->table_name}->get($slide_entity->recordId);
-            $this->compact($str.$i,${$str.$i},$arrEntity);
-            $i++;
+        $arr_table = array();
+        $slides = $this->Slides->find('all')->select(['recordId','table_name','display_order'])->order(['display_order'=>'ASC'])->toArray();
+        foreach ($slides as $slide){
+            $tmp = $this->{$slide->table_name}->get($slide->recordId);
+            array_push($arr_table,$tmp);
         }
-        $this->set($arrEntity);
+
+        $this->set(compact('slides','orders','status','arr_table'));
         $this->set('_serialize', ['slides']);
     }
     public function getAjax(){

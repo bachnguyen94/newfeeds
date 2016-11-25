@@ -44,25 +44,35 @@ class SlidesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasOne('Businesses', [
+        $this->belongsTo('Businesses', [
             'className' => 'Businesses',
-            'foreignKey' => 'slide_id'
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Businesses'],
+            'joinType' => 'INNER'
         ]);
-        $this->hasOne('Fashions', [
+        $this->belongsTo('Fashions', [
             'className' => 'Fashions',
-            'foreignKey' => 'slide_id'
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Fashions'],
+            'joinType' => 'INNER'
         ]);
-        $this->hasOne('Games', [
+        $this->belongsTo('Games', [
             'className' => 'Games',
-            'foreignKey' => 'slide_id'
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Games'],
+            'joinType' => 'INNER'
         ]);
-        $this->hasOne('Photographies', [
+        $this->belongsTo('Photographies', [
             'className' => 'Photographies',
-            'foreignKey' => 'slide_id'
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Photographies'],
+            'joinType' => 'INNER'
         ]);
-        $this->hasOne('Technologies', [
+        $this->belongsTo('Technologies', [
             'className' => 'Technologies',
-            'foreignKey' => 'slide_id'
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Technologies'],
+            'joinType' => 'INNER'
         ]);
     }
 

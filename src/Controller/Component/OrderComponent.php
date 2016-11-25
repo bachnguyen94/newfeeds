@@ -12,7 +12,15 @@ use Cake\Controller\Component;
 
 class OrderComponent extends Component
 {
-    public function orderSlide(){
+    public function orderSlide($request = null,$cur_order = null){
+        if($request && !$cur_order){ //thêm
 
+        }
+        if($request && $cur_order){ //đổi vị trí
+
+        }
+        if(!$request && $cur_order){ // xóa
+
+        }
     }
 }

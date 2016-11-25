@@ -30,15 +30,17 @@ class BusinessesTable extends Table
      */
     public function initialize(array $config)
     {
+        parent::initialize($config);
         $this->table('businesses');
         $this->displayField('title');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-        $this->belongsTo('Slides', [
+        $this->hasOne('Slides', [
             'className' => 'Slides',
-            'foreignKey' => 'slide_id',
-            'conditions' => ['table_name' => 'Businesses']
+            'foreignKey' => 'recordId',
+            'conditions' => ['Slides.table_name' => 'Businesses'],
+            'joinType' => 'INNER'
         ]);
     }
 
